@@ -1,10 +1,858 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Sbora</title>
-</head>
-<body>
-  <h1>Sbora</h1>
-  <p>Первый деплой работает.</p>
-</body>
-</html>
+<style>
+ .sbora-faq{
+  padding:24px 0 10px;
+}
+
+.sbora-faq-title{
+  font-size:30px;
+  line-height:1.1;
+  font-weight:800;
+  margin:0 0 18px;
+}
+
+.sbora-faq-item{
+  background:#fff;
+  border:1px solid rgba(7,20,45,.08);
+  border-radius:18px;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+
+.sbora-faq-question{
+  width:100%;
+  border:0;
+  background:none;
+  padding:20px;
+  text-align:left;
+  font-size:16px;
+  font-weight:700;
+  color:#07142d;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.sbora-faq-answer{
+  display:none;
+  padding:0 20px 20px;
+  font-size:15px;
+  line-height:1.6;
+  color:#4b5565;
+}
+
+.sbora-faq-item.active .sbora-faq-answer{
+  display:block;
+}
+
+.sbora-faq-item.active .sbora-plus{
+  transform:rotate(45deg);
+}
+  
+  .sbora-wrap {
+    font-family: Inter, Arial, sans-serif;
+    background: #faf7f3;
+    color: #07142d;
+    max-width: 430px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+.sbora-hero {
+  position: relative;
+  min-height: 760px;
+  padding: 18px 18px 0;
+  overflow: visible;
+  border-radius: 0 0 34px 34px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.86) 0%, rgba(0,0,0,.62) 44%, rgba(0,0,0,.18) 100%),
+    url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+}
+
+  .sbora-header {
+    height: 68px;
+    background: #fff;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.16);
+  }
+
+  .sbora-logo {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -2px;
+  }
+
+ .sbora-footer-logo span{
+  background:linear-gradient(135deg,#ff8a34,#ff1d6b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  }
+
+  .sbora-menu {
+    font-size: 34px;
+    line-height: 1;
+  }
+
+.sbora-hero-text {
+  margin-top: 72px;
+  max-width: 290px;
+  color: #fff;
+  position: relative;
+  z-index: 3;
+}
+
+  .sbora-hero h1 {
+    font-size: 44px;
+    line-height: .98;
+    letter-spacing: -1.8px;
+    margin: 0 0 28px;
+    font-weight: 850;
+  }
+
+  .sbora-hero p {
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0 0 22px;
+    color: rgba(255,255,255,.92);
+  }
+
+  .sbora-btn {
+    margin-top: 100px;
+    display: inline-flex;
+    height: 58px;
+    padding: 0 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: linear-gradient(135deg,#ff8a34,#ff1d6b);
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 750;
+    box-shadow: 0 16px 40px rgba(255,69,95,.35);
+  } 
+  
+.sbora-phone {
+  position: absolute;
+  right: 18px;
+  bottom: -45px;
+  width: 185px;
+  height: 375px;
+  background: #fff;
+  border: 7px solid #111;
+  border-radius: 36px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.45);
+  overflow: hidden;
+  z-index: 2;
+}
+  .phone-top {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .phone-img {
+    height: 112px;
+    background: url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=900&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .phone-body {
+    padding: 16px;
+  }
+
+  .phone-body h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .phone-body p {
+    margin: 0 0 14px;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #333;
+  }
+
+  .phone-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .phone-cell {
+    background: #f6f2ee;
+    border-radius: 9px;
+    padding: 8px 5px;
+    font-size: 9px;
+    color: #333;
+  }
+
+  .phone-cell b {
+    display: block;
+    font-size: 10px;
+    color: #111;
+  }
+
+  .phone-book {
+    height: 38px;
+    border-radius: 9px;
+    background: linear-gradient(135deg,#ff8a34,#ff1d6b);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sbora-section {
+    padding: 54px 24px 34px;
+  }
+
+  .sbora-section h2 {
+    margin: 0 0 24px;
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -1px;
+  }
+
+  .sbora-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sbora-card {
+    background: #fff;
+    border: 1px solid rgba(7,20,45,.08);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(7,20,45,.05);
+  }
+
+  .sbora-card-head {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 20px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: inherit;
+    color: #07142d;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .sbora-card-title {
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .sbora-plus {
+    font-size: 24px;
+    line-height: 1;
+    transition: transform .25s ease;
+  }
+
+  .sbora-card.active .sbora-plus {
+    transform: rotate(45deg);
+  }
+
+  .sbora-card-content {
+    display: none;
+    padding: 0 22px 22px;
+  }
+
+  .sbora-card.active .sbora-card-content {
+    display: block;
+  }
+
+  .sbora-card-content p {
+    margin: 0 0 22px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #27324a;
+  }
+
+  .sbora-scheme {
+    margin-top: 10px;
+    padding: 24px 14px 18px;
+    border-radius: 16px;
+    background: linear-gradient(135deg,#fff3ea,#fff);
+  }
+
+  .scheme-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+  }
+
+  .scheme-item {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: #07142d;
+  }
+
+  .scheme-icon {
+    width: 38px;
+    height: 38px;
+    margin: 0 auto 8px;
+    border: 1.5px solid #07142d;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: #fff;
+  }
+
+  .scheme-arrow {
+    color: #ff5b45;
+    font-weight: 900;
+    margin-top: -18px;
+  }
+
+  .sbora-final {
+    margin-top: 26px;
+    padding: 28px 22px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg,#fff4ea,#fff);
+  }
+
+  .sbora-final b {
+    display: block;
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+
+  .sbora-final p {
+    margin: 0;
+    font-size: 14px;
+    color: #27324a;
+  }
+
+  .sbora-footer {
+    padding: 40px 24px 44px;
+    background: #07142d;
+    color: #fff;
+    border-radius: 34px 34px 0 0;
+  }
+
+.sbora-footer-logo{
+  font-family: Manrope, sans-serif;
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:-2px;
+  color:#fff;
+  }
+
+  .sbora-footer-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255,255,255,.74);
+    margin: 0 0 28px;
+  }
+
+  .sbora-footer-links {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .sbora-footer-links a {
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .sbora-footer-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 15px;
+    background: linear-gradient(135deg,#ff8a34,#ff1d6b);
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 24px;
+  }
+
+  .sbora-footer-bottom {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(255,255,255,.46);
+  }
+
+  @media (max-width: 380px) {
+    .sbora-hero h1 { font-size: 39px; }
+    .sbora-phone { width: 170px; }
+    .sbora-btn { width: 100%; padding: 0; }
+  }
+
+.sbora-stats {
+  padding: 55px 24px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sbora-stat-card{
+  position:relative;
+  min-height:240px;
+  border-radius:28px;
+  overflow:hidden;
+}
+
+.sbora-stat-blue{
+  background:
+  linear-gradient(
+  180deg,
+  #b8d1f5 0%,
+  #dfeaf9 100%
+  );
+}
+
+.sbora-stat-photo{
+  background:
+  url("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop");
+  background-size:cover;
+  background-position:center;
+}
+
+.sbora-stat-photo2{
+  background:
+  url("https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop");
+  background-size:cover;
+  background-position:center;
+}
+
+.sbora-stat-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.45);
+}
+
+.sbora-stat-content{
+  position:absolute;
+  left:28px;
+  right:28px;
+  bottom:28px;
+  z-index:2;
+}
+
+.sbora-stat-number{
+  font-size:72px;
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-3px;
+  color:#07142d;
+}
+
+.sbora-stat-title{
+  margin-top:10px;
+  font-size:28px;
+  line-height:1.05;
+  font-weight:800;
+}
+
+.sbora-stat-text{
+  margin-top:12px;
+  font-size:17px;
+  line-height:1.45;
+  color:#4b5565;
+}
+
+.white .sbora-stat-number,
+.white .sbora-stat-title,
+.white .sbora-stat-text{
+  color:#fff;
+}
+.sbora-logo img{
+  height:46px;
+  width:auto;
+  display:block;
+}
+.sbora-footer-logo img{
+  height:42px;
+  width:auto;
+  display:block;
+  filter: brightness(0) invert(1);
+    
+}
+    
+</style>
+
+<div class="sbora-wrap">
+  <section class="sbora-hero">
+    <div class="sbora-header">
+<div class="sbora-logo">
+  <img
+    src="https://storage.yandexcloud.net/sbora-assets/sbora-exact-logo.svg"
+    alt="Sbora">
+</div>
+
+      <div class="sbora-menu">≡</div>
+    </div>
+
+    <div class="sbora-hero-text">
+<h1>Собирайте <span class="sbora-accent">гостей</span><br>у себя</h1>
+<p>Собственный сайт для владельцев апартаментов и управляющих компаний.</p>
+      <a class="sbora-btn" href="#site">Посмотреть ваш сайт</a>
+    </div>
+
+    <div class="sbora-phone">
+      <div class="phone-top">
+        <span>Апартаменты у моря</span>
+        <span>☰</span>
+      </div>
+      <div class="phone-img"></div>
+      <div class="phone-body">
+        <h3>Стильные апартаменты у моря</h3>
+        <p>Просторные комнаты, вид на море и всё для вашего отдыха.</p>
+        <div class="phone-row">
+          <div class="phone-cell">Заезд <b>24 мая</b></div>
+          <div class="phone-cell">Выезд <b>26 мая</b></div>
+          <div class="phone-cell">Гости <b>2 гостя</b></div>
+        </div>
+        <div class="phone-book">Забронировать</div>
+      </div>
+    </div>
+  </section>
+<section class="sbora-stats">
+
+  <div class="sbora-stat-card sbora-stat-blue">
+    <div class="sbora-stat-content">
+      <div class="sbora-stat-number">0</div>
+      <div class="sbora-stat-title">дней согласований</div>
+      <div class="sbora-stat-text">
+        Не нужно заказывать разработку сайта.
+      </div>
+    </div>
+  </div>
+
+  <div class="sbora-stat-card sbora-stat-photo">
+    <div class="sbora-stat-overlay"></div>
+
+    <div class="sbora-stat-content white">
+      <div class="sbora-stat-number">24 часа</div>
+      <div class="sbora-stat-title">и сайт готов</div>
+
+      <div class="sbora-stat-text">
+        Запускаем сайт без долгой подготовки.
+      </div>
+    </div>
+  </div>
+
+  <div class="sbora-stat-card sbora-stat-photo2">
+    <div class="sbora-stat-overlay"></div>
+
+    <div class="sbora-stat-content white">
+      <div class="sbora-stat-number">340%+</div>
+      <div class="sbora-stat-title">прямых бронирований</div>
+
+    <div class="sbora-stat-text">
+  Собирайте больше прямых бронирований. 
+</div>
+    </div>
+  </div>
+
+</section>
+  <section class="sbora-section" id="site">
+<h2>Ваш сайт —<br>ваш канал <span>прямых бронирований</span></h2>
+    <div class="sbora-accordion">
+
+      <div class="sbora-card">
+        <button class="sbora-card-head">
+          <span class="sbora-card-title">Меньше зависимости от площадок</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Площадки могут менять комиссии, правила, выдачу и блокировать аккаунты. Ваш сайт остаётся вашей точкой контакта с гостем.</p>
+          <div class="sbora-scheme">
+            <div class="scheme-flow">
+              <div class="scheme-item"><div class="scheme-icon">%</div>Агрегатор</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">⌂</div>Ваш сайт</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item">
+  <div class="scheme-icon">✓</div>
+  Прямое бронирование
+</div>
+              
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbora-card active">
+        <button class="sbora-card-head">
+          
+          <span class="sbora-card-title">Прямые бронирования</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Гость находит вас в поиске, рекомендациях или на агрегаторе — и переходит на ваш сайт, чтобы забронировать напрямую.</p>
+          <div class="sbora-scheme">
+            <div class="scheme-flow">
+              <div class="scheme-item"><div class="scheme-icon">⌕</div>Поиск</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">⌂</div>Ваш сайт</div>
+              <div class="scheme-arrow">→</div>
+<div class="scheme-item">
+  <div class="scheme-icon">✓</div>
+  Бронирование
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbora-card">
+        <button class="sbora-card-head">
+          <span class="sbora-card-title">Возвращайте гостей</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Первый раз гость может прийти с площадки. После проживания отправьте ему ссылку на сайт — и в следующий раз он сможет забронировать у вас без посредников.</p>
+          <div class="sbora-scheme">
+            <div class="scheme-flow">
+              <div class="scheme-item"><div class="scheme-icon">☻</div>Гость</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">↗</div>Ссылка</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">♡</div>Повторное бронирование</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbora-card">
+        <button class="sbora-card-head">
+          <span class="sbora-card-title">Сайт накапливает потенциал</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Со временем сайт набирает поисковый вес, прямые переходы, доверие, отзывы и узнаваемость.</p>
+          <div class="sbora-scheme">
+            <div class="scheme-flow">
+              <div class="scheme-item"><div class="scheme-icon">SEO</div>Поиск</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">★</div>Доверие</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">↗</div>Рост бронирований</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbora-card">
+        <button class="sbora-card-head">
+          <span class="sbora-card-title">Выделяйтесь среди конкурентов</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Выделяйтесь среди конкурентов серьёзностью вашего бизнеса. Собственный сайт выглядит профессиональнее обычного объявления и помогает вызывать больше доверия.</p>
+          <div class="sbora-scheme">
+            <div class="scheme-flow">
+              <div class="scheme-item"><div class="scheme-icon">▦</div>Объявления</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">⌂</div>Ваш сайт</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">★</div>Доверие</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbora-card">
+        <button class="sbora-card-head">
+          <span class="sbora-card-title">Ссылка, которой удобно делиться</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Ссылку на ваш сайт легко отправить гостям, коллегам и партнёрам. Это сильнее, чем объявление на агрегаторе.</p>
+          <div class="sbora-scheme">
+            <div style="background:#fff;border-radius:16px;padding:18px;border:1px solid rgba(7,20,45,.08);">
+              <div style="font-size:13px;color:#667085;margin-bottom:12px;">Коллега</div>
+              <div style="font-size:16px;font-weight:600;color:#07142d;margin-bottom:14px;">Вот сайт нашего апартамента 👇</div>
+              <div style="display:inline-flex;align-items:center;gap:10px;background:#f5f7fb;border-radius:12px;padding:10px 14px;font-weight:700;color:#4a63ff;">
+                sbora.site <span style="color:#07142d;">↗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbora-card">
+        <button class="sbora-card-head">
+          <span class="sbora-card-title">Сайт развивается вместе с вами</span>
+          <span class="sbora-plus">+</span>
+        </button>
+        <div class="sbora-card-content">
+          <p>Мы регулярно улучшаем внешний вид, удобство и возможности вашего сайта. Добавляем новые инструменты, чтобы у вас появлялось больше способов собирать гостей.</p>
+          <div class="sbora-scheme">
+            <div class="scheme-flow">
+              <div class="scheme-item"><div class="scheme-icon">+</div>Новые функции</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">⚙</div>Инструменты</div>
+              <div class="scheme-arrow">→</div>
+              <div class="scheme-item"><div class="scheme-icon">↗</div>Больше возможностей</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sbora-final">      
+    
+    
+    <b>Собирайте гостей у себя.</b>
+<p>Ваш сайт работает на вас 24/7.</p>
+    </div>
+  </section>
+
+    <section class="sbora-faq">
+
+  <h2 class="sbora-faq-title">
+    Частые вопросы
+  </h2>
+
+  <div class="sbora-faq-item">
+    <button class="sbora-faq-question">
+      Сколько времени занимает запуск сайта?
+      <span class="sbora-plus">+</span>
+    </button>
+
+    <div class="sbora-faq-answer">
+      Обычно сайт готов в течение 24 часов после получения информации об объекте.
+      А возможно, ваш сайт уже готов.
+    </div>
+  </div>
+
+  <div class="sbora-faq-item">
+    <button class="sbora-faq-question">
+      Нужно ли отказываться от Авито, Суточно.ру или других площадок?
+      <span class="sbora-plus">+</span>
+    </button>
+
+    <div class="sbora-faq-answer">
+      Нет. Мы работаем вместе с агрегаторами.
+      Сайт помогает получать дополнительные прямые бронирования
+      и постепенно снижать зависимость от площадок.
+    </div>
+  </div>
+
+  <div class="sbora-faq-item">
+    <button class="sbora-faq-question">
+      Как гости найдут мой сайт?
+      <span class="sbora-plus">+</span>
+    </button>
+
+    <div class="sbora-faq-answer">
+      Через поисковые системы, геосервисы, рекомендации,
+      прямые ссылки и повторные бронирования.
+      Также многие гости находят объект на площадке
+      и затем ищут сайт владельца напрямую.
+    </div>
+  </div>
+
+  <div class="sbora-faq-item">
+    <button class="sbora-faq-question">
+      Можно ли использовать сайт для нескольких объектов?
+      <span class="sbora-plus">+</span>
+    </button>
+
+    <div class="sbora-faq-answer">
+      Да. Сайт подходит как для одного объекта,
+      так и для управляющей компании.
+    </div>
+  </div>
+
+  <div class="sbora-faq-item">
+    <button class="sbora-faq-question">
+      Что будет после запуска?
+      <span class="sbora-plus">+</span>
+    </button>
+
+    <div class="sbora-faq-answer">
+      Мы продолжаем развивать платформу,
+      улучшаем внешний вид сайта,
+      удобство бронирования и регулярно
+      добавляем новые возможности.
+    </div>
+  </div>
+
+  <div class="sbora-faq-item">
+    <button class="sbora-faq-question">
+      Смогу ли я получать прямые бронирования без комиссии?
+      <span class="sbora-plus">+</span>
+    </button>
+
+    <div class="sbora-faq-answer">
+      Да. Гости могут бронировать напрямую через ваш сайт без комиссии агрегаторов.
+      При этом вы продолжаете получать бронирования и с площадок,
+      используя оба канала одновременно.
+    </div>
+  </div>
+
+</section>
+
+
+  <footer class="sbora-footer">
+<div class="sbora-footer-logo">
+  sb<span>o</span>ra
+</div>   <p class="sbora-footer-text">
+Собственный сайт для владельцев апартаментов и управляющих компаний.
+Собирайте гостей, получайте прямые бронирования и развивайте свой канал продаж.
+    </p>
+
+    <div class="sbora-footer-links">
+      <a href="#site">Преимущества</a>
+      <a href="#">Посмотреть пример</a>
+      <a href="#">Получить консультацию</a>
+    </div>
+
+    <a class="sbora-footer-cta" href="#">Посмотреть ваш сайт</a>
+
+  <div class="sbora-footer-bottom">
+  © 2026 Sbora. Ваш канал бронирований.<br>
+  Информация на сайте не является публичной офертой.
+</div>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('.sbora-card-head').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const card = button.closest('.sbora-card');
+      card.classList.toggle('active');
+    });
+  });
+  document.querySelectorAll('.sbora-faq-question').forEach(function(button) {
+  button.addEventListener('click', function() {
+    button.parentElement.classList.toggle('active');
+  });
+});
+</script>
