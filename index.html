@@ -70,15 +70,22 @@ body{
   transform:rotate(45deg);
 }
   
-  .sbora-wrap {
-    font-family: Inter, Arial, sans-serif;
-    background: #faf7f3;
-    color: #07142d;
-    width:100%;
-max-width:430px;
-margin:0 auto;
-    overflow-x: hidden;
+.sbora-wrap{
+  font-family: Inter, Arial, sans-serif;
+  background:#faf7f3;
+  color:#07142d;
+  width:100%;
+  max-width:none;
+  margin:0;
+  overflow-x:hidden;
+}
+
+@media (min-width:768px){
+  .sbora-wrap{
+    max-width:430px;
+    margin:0 auto;
   }
+}
 
 .sbora-hero {
   position: relative;
